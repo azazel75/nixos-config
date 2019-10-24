@@ -34,7 +34,7 @@
   #     - When done writing hibernation image, suspend.
   environment.etc."systemd/sleep.conf".text = pkgs.lib.mkForce ''
     [Sleep]
-    AllowHibernate=yes
+    AllowHibernation=yes
     AllowSuspendThenHibernate=yes
     SuspendState=mem
     SuspendMode=suspend
