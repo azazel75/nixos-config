@@ -141,11 +141,11 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
-  # virtualisation.virtualbox.host = {
-  #   enable = true;
-  #   enableExtensionPack = true;
-  # };
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    #enableExtensionPack = true;
+  };
   services.printing.enable = true;
 
   services.journald.extraConfig = ''
