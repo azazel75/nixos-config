@@ -26,7 +26,6 @@
   boot.kernelParams = [
     "mem_sleep_default=deep"
   ];
-  boot.earlyVconsoleSetup = true;
   boot.loader.grub = {
     efiSupport = true;
     enable = true;
@@ -41,13 +40,15 @@
 
   boot.cleanTmpDir = true;
 
-  #Select internationalisation properties.
-  i18n = {
-    consoleFont = "ter-132n";
-    consoleKeyMap = "it";
-    defaultLocale = "it_IT.UTF-8";
-    consolePackages = [ pkgs.terminus_font ];
+  console = {
+    earlySetup = true;
+    font = "ter-132n";
+    keyMap = "it";
+    packages = [ pkgs.terminus_font ];
   };
+
+  #Select internationalisation properties.
+  i18n.defaultLocale = "it_IT.UTF-8";
 
   # Set your time zone.
   time.timeZone = "Europe/Rome";
