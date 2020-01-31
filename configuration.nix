@@ -78,6 +78,7 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
+  services.hardware.bolt = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "it";
