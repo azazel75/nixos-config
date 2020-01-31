@@ -34,17 +34,24 @@
   #     - When done writing hibernation image, suspend.
   environment.etc."systemd/sleep.conf".text = pkgs.lib.mkForce ''
     [Sleep]
+    AllowSuspend=no
+    AllowHybridSleep=yes
     AllowHibernation=yes
     AllowSuspendThenHibernate=yes
-    SuspendState=mem
     SuspendMode=suspend
-    HibernateMode=shutdown
+    SuspendState=mem
+    HybridSleepMode=suspend
+    HybridSleepState=mem
+    HibernateMode=platform
     HibernateState=disk
-    HibernateDelaySec=600
+    HibernateDelaySec=7200
   '';
   services.logind = with pkgs.lib; rec {
     lidSwitch = mkForce "suspend-then-hibernate";
-    lidSwitchDocked = lidSwitch;
+    lidSwitchDocked = "ignore";
     lidSwitchExternalPower = lidSwitch;
+    extraConfig = ''
+      idleAction=lock
+    '';
   };
 }
