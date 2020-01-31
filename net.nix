@@ -17,6 +17,9 @@
     networkmanager = {
       enable = true;
       enableStrongSwan = true;
+      packages = with pkgs; [
+        networkmanager-openvpn
+      ];
       wifi = {
         powersave = true;
       };
