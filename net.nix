@@ -9,8 +9,7 @@
       "172.21.200.133" = ["intranet.apss.tn.it" "intranet"];
       "172.21.210.84" = ["intranet-new.apss.tn.it" "intranet-new"];
     };
-    # extraHosts = lib.readFile ./ads-hosts;
-    connman.enable = false;
+  # extraHosts = lib.readFile ./ads-hosts;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

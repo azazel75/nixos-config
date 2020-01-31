@@ -66,6 +66,7 @@
     enable = true;
     nssmdns = true;
   };
+  services.connman.enable = false;
 
   #services.teamviewer.enable = true;
 
