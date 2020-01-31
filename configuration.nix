@@ -49,7 +49,7 @@
   #Select internationalisation properties.
   i18n.defaultLocale = "it_IT.UTF-8";
 
-  location = import ./secret/location.nix;
+  # location = import ./secret/location.nix;
   # Set your time zone.
   time.timeZone = "Europe/Rome";
 

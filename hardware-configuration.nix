@@ -7,7 +7,7 @@ let
 in {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    /home/azazel/wip/nixos/nixos-hardware/lenovo/thinkpad/x1/6th-gen/QHD/default.nix
+    # /home/azazel/wip/nixos/nixos-hardware/lenovo/thinkpad/x1/6th-gen/QHD/default.nix
     # nur.repos.moredread.modules.throttled
   ];
 
