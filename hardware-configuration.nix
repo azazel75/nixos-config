@@ -72,6 +72,10 @@ in {
 
   swapDevices = [ { device="/dev/system/swap"; } ];
 
+  hardware.trackpoint = {
+    enable = true;
+    sensitivity = 170;
+  };
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.pulseaudio.enable = true;
