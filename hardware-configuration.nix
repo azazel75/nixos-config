@@ -11,7 +11,10 @@ in {
     # nur.repos.moredread.modules.throttled
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd = {
+    availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+    kernelModules = [ "intel_agp" "i915" ];
+  };
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "intel_iommu=nobounce" ];
   boot.extraModulePackages = [ ];
