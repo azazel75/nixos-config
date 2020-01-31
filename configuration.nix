@@ -103,7 +103,7 @@ echo Xft.dpi: $DPI | xrdb -merge
   '';
 
   programs.sway = {
-    enable = true;
+    enable = false;
     extraPackages = with pkgs; [
       swaylock swayidle xwayland i3status dmenu
     ];
