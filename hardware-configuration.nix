@@ -73,13 +73,14 @@ in {
   swapDevices = [ { device="/dev/system/swap"; } ];
 
   hardware.brightnessctl.enable = true;
+  hardware.pulseaudio.enable = true;
   hardware.trackpoint = {
     enable = true;
     sensitivity = 170;
   };
+
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.pulseaudio.enable = true;
-  systemd.timers.cpu-throttling.enable = lib.mkForce false;
   services.throttled.enable = true;
+  systemd.timers.cpu-throttling.enable = lib.mkForce false;
 }
