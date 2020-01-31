@@ -49,6 +49,7 @@
   #Select internationalisation properties.
   i18n.defaultLocale = "it_IT.UTF-8";
 
+  location = import ./secret/location.nix;
   # Set your time zone.
   time.timeZone = "Europe/Rome";
 
@@ -100,7 +101,19 @@ TERMINAL=sakura
 XCURSOR_SIZE=48
 export EDITOR TERMINAL XCURSOR_SIZE DPI
 echo Xft.dpi: $DPI | xrdb -merge
+xset s off
+xset dpms 600 600
+xset +dpms
+
+${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   '';
+
+  sound.mediaKeys = {
+    enable = true;
+    volumeStep = "5%";
+  };
+  services.illum.enable = true;
+  services.redshift.enable = true;
 
   programs.sway = {
     enable = false;
