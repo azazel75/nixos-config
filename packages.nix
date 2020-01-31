@@ -22,6 +22,8 @@
     # pcsctools
     libacr38u opensc
 
+    mate.mate-notification-daemon
+
   ];
 
   users.users.azazel.packages = with pkgs; [
