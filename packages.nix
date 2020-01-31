@@ -31,7 +31,7 @@
 
     # apps
     albert
-    anydesk
+    #anydesk
     aqemu
     aspellDicts.en
     aspellDicts.it
