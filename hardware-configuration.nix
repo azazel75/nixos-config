@@ -72,6 +72,7 @@ in {
 
   swapDevices = [ { device="/dev/system/swap"; } ];
 
+  hardware.brightnessctl.enable = true;
   hardware.trackpoint = {
     enable = true;
     sensitivity = 170;
