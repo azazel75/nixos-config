@@ -129,7 +129,7 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   users.users.azazel = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" ];
+    extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" "video" ];
     createHome = true;
     initialHashedPassword = "";
     description = "Alberto Berti";
