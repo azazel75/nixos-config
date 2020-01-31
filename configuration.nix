@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -141,10 +141,15 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
-  virtualisation.docker.enable = true;
   virtualisation.virtualbox.host = {
     enable = true;
     #enableExtensionPack = true;
+  };
+  virtualisation.docker = {
+    enable = true;
+    extraOptions = lib.concatStringsSep " " [
+      "--insecure-registry=10.4.0.76" # E.'s internal registry
+    ];
   };
   services.printing.enable = true;
 
