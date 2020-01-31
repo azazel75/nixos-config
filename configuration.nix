@@ -88,7 +88,8 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.enlightenment.enable = false;
-  services.xserver.desktopManager.mate.enable = true;
+  services.xserver.desktopManager.mate.enable = false;
+  services.xserver.desktopManager.pantheon.enable = true;
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.extraSessionCommands = ''
 
