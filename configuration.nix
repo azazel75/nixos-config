@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./net.nix
-      # /home/azazel/wip/etour/ndn_deploy/nixos/modules
       ./packages.nix
       ./tlp.nix
       ./nur.nix
@@ -67,22 +66,20 @@
     enable = true;
     nssmdns = true;
   };
-  #services.teamviewer.enable = true;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  #services.teamviewer.enable = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
 
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "it";
   services.xserver.xkbOptions = "eurosign:e";
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
@@ -135,11 +132,6 @@ echo Xft.dpi: $DPI | xrdb -merge
   # };
   virtualisation.docker.enable = true;
   services.printing.enable = true;
-  # etour.cluster = rec {
-  #   masterHosts = [config.networking.hostName];
-  #   workerHosts = masterHosts;
-  # };
-  #programs.sysdig.enable = true;
 
   services.journald.extraConfig = ''
     MaxRetentionSec = 4 month
