@@ -91,7 +91,6 @@ in {
 
   swapDevices = [ { device="/dev/system/swap"; } ];
 
-  hardware.brightnessctl.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.trackpoint = {
     enable = true;
