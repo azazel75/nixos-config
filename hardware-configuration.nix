@@ -15,9 +15,10 @@ in {
     availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
     kernelModules = [ "intel_agp" "i915" ];
   };
-  boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "intel_iommu=nobounce" ];
   boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "v4l2loopback"];
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
   fileSystems = {
     "/" = {
