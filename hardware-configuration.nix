@@ -15,9 +15,13 @@ in {
     availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
     kernelModules = [ "intel_agp" "i915" ];
   };
-  boot.kernelParams = [ "intel_iommu=nobounce" ];
-  boot.extraModulePackages = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback"];
+  boot.kernelParams = [
+    "intel_iommu=nobounce"
+    # see https://github.com/NixOS/nixpkgs/pull/102106
+    # and https://github.com/erpalma/throttled/issues/215
+    "msr.allow_writes=on"
+  ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
   fileSystems = {
