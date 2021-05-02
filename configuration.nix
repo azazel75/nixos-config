@@ -13,6 +13,7 @@
       ./tlp.nix
       ./nur.nix
       ./encryption.nix
+      ./vpn.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

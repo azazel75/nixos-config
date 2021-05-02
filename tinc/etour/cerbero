@@ -1,0 +1,13 @@
+Address = vpn.etour.tn.it 655
+Subnet = 192.168.50.1/32
+Subnet = 192.168.69.0/24
+Subnet = 192.168.70.0/24
+
+-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAq5d6mIYxEGomZGxu0Ug/V1PzN+K0nAf2nv90xeZ6tAsAdyNp3W/T
+vm/d4nkw0xf1cbV4hglXVDJivoF9n1Jco1C3DDjDPaWqEYnAvCFs4yB+pQS+gy/J
+kIc9cGVpjkhV35kdLZz/Ls92F1yf8XWZwHjGEaLWUNBnJdEMtacl3v9HHswjfAHN
+hvTrNk+DTDmGpoV4/rLMBLAtNyGo+rGJP45ekJ283sh7zA4Hftoqv+sqfzUsgZKt
+bjq+bkPVPG8hT3gaWuJ5LMYnKV1OQ2EC+NWyQASYOmGlvWg5oX1X6oXeWPIeHMv0
+yWpAORElkO//whsMWIE3Iw4hRRpsKo7j7wIDAQAB
+-----END RSA PUBLIC KEY-----
