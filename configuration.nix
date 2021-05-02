@@ -187,4 +187,7 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
       }
     });
   '';
+  # fix issues with k3d and docker
+  # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
+  systemd.enableUnifiedCgroupHierarchy = false;
 }
