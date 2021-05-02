@@ -44,10 +44,7 @@
   boot.cleanTmpDir = true;
 
   console = {
-    earlySetup = true;
-    font = "ter-132n";
     keyMap = "it";
-    packages = [ pkgs.terminus_font ];
   };
 
   #Select internationalisation properties.
