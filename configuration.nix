@@ -50,6 +50,7 @@
   #Select internationalisation properties.
   i18n.defaultLocale = "it_IT.UTF-8";
 
+  environment.homeBinInPath = true;
   location = import ./secret/location.nix;
   # Set your time zone.
   time.timeZone = "Europe/Rome";
@@ -79,6 +80,8 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
+  services.hardware.bolt.enable = true;
+  services.gvfs.enable = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "it";
@@ -91,7 +94,7 @@
   # services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.enlightenment.enable = false;
   services.xserver.desktopManager.mate.enable = false;
-  services.xserver.desktopManager.pantheon.enable = true;
+  services.xserver.desktopManager.pantheon.enable = false;
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.extraSessionCommands = ''
 
@@ -126,11 +129,13 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   services.pcscd.enable = true;
   services.pcscd.plugins = [ pkgs.ccid pkgs.libacr38u];
   services.fwupd.enable = true;
+  services.fstrim.enable = true;
 
   users.users.azazel = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" "video" ];
+    extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" "video" "libvirtd"
+                    "scanner" "lp" ];
     createHome = true;
     initialHashedPassword = "";
     description = "Alberto Berti";
@@ -142,15 +147,20 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    #enableExtensionPack = true;
-  };
-  virtualisation.docker = {
-    enable = true;
-    extraOptions = lib.concatStringsSep " " [
-      "--insecure-registry=10.4.0.76" # E.'s internal registry
-    ];
+  virtualisation = {
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = false;
+    };
+    docker = {
+      enable = true;
+      extraOptions = lib.concatStringsSep " " [
+        "--insecure-registry=10.4.0.76" # E.'s internal registry
+      ];
+    };
+    libvirtd = {
+      enable = false;
+    };
   };
   services.printing.enable = true;
 
