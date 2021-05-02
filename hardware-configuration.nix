@@ -65,10 +65,22 @@ in {
       ];
     };
 
+    "/mnt/portable/sabrent1" = {
+      device = "UUID=f846c91d-4206-4184-aa79-3246f01612c7";
+      fsType = "xfs";
+      options = [
+        "noatime"
+        "noauto"
+        "x-systemd.automount"
+        ''x-systemd.idle-timeout="20min"''
+      ];
+    };
+
     "/mnt/portable/samsung" = {
       device = "UUID=df6cab1a-128d-4a6c-89fe-64b5ee54d1fd";
       fsType = "ext4";
       options = [
+        "noatime"
         "noauto"
         "x-systemd.automount"
         ''x-systemd.idle-timeout="20min"''
