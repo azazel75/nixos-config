@@ -169,6 +169,10 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   '';
 
   nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
     trustedUsers = [ "root" "azazel" ];
     useSandbox = "relaxed";
   };
