@@ -1,100 +1,105 @@
-{ config, lib, pkgs, ... }: {
-  nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    # utils
-    wget vim less tree tmux zile sshfs nfs-utils cifs-utils
-    cpio dhcp
-    exa
-    file
-    htop
-    inetutils
-    killall
-    nmap
-    p7zip
-    pciutils
-    unzip
+{ config, lib, pkgs, ... }:
+  let
+  in {
+    nixpkgs.config.allowUnfree = true;
+    environment.systemPackages = with pkgs; [
+      # utils
+      wget vim less tree tmux zile sshfs nfs-utils cifs-utils
+      cpio dhcp
+      file
+      htop
+      xfsprogs
+      inetutils
+      killall
+      nmap
+      # p7zip # insecure
+      pciutils
+      unzip
 
-    # apps
-    emacs firefox gnupg openssl python3 stunnel sysstat tcpdump
+      # apps
+      firefox
+      gnupg openssl python3 stunnel sysstat tcpdump
 
 
-    # smarcard
-    # pcsctools
-    libacr38u opensc
+      # smarcard
+      # pcsctools
+      libacr38u opensc
+      mate.mate-notification-daemon
 
-    mate.mate-notification-daemon
+    ];
 
-  ];
+    users.users.azazel.packages = with pkgs; [
 
-  users.users.azazel.packages = with pkgs; [
+      # utils
+      adb-sync
 
-    # utils
-    adb-sync
+      # apps
+      #albert
+      #anydesk
+      #aqemu
+      aspellDicts.en
+      aspellDicts.it
+      borgbackup
+      # calibre
+      cachix
+      chromium
+      crip # terminal ripper
+      # darcs # marked as broken
+      #digikam
+      dpkg
+      elixir_1_10 erlang mimic
+      emacsGcc ripgrep fd clang #doom-emacs stuff
+      evince
+      flac
+      gnome3.cheese
+      google-chrome
+      hunspell
+      hunspellDicts.en-us
+      hunspellDicts.it-it
+      inkscape
+      ispell
+      #kodi
+      kubectl
+      kvm
+      libreoffice
+      libvirt
+      lyx
+      mate.caja
+      mate.caja-extensions
+      mc
+      #mupdf
+      neuron
+      nextcloud-client
+      puddletag
+      python3
+      redshift
+      remmina
+      samba
+      scrcpy
+      signal-desktop
+      skopeo
+      sqlitebrowser
+      (texlive.combine {
+            inherit (texlive) scheme-medium collection-langitalian; # caption wrapfig;
+      })
+      thunderbird
+      #tor-browser-bundle-bin
+      units
+      virtmanager
+      vlc
+      #wine-staging
+      #xonsh
+      #xsettingsd
+      #zeal
 
-    # apps
-    albert
-    #anydesk
-    aqemu
-    aspellDicts.en
-    aspellDicts.it
-    borgbackup
-    calibre
-    chromium
-    crip # terminal ripper
-    # darcs # marked as broken
-    digikam
-    dpkg
-    elixir_1_9 erlang mimic
-    evince
-    flac
-    gnome3.cheese
-    gnome3.dconf-editor
-    google-chrome
-    hunspell
-    hunspellDicts.en-us
-    hunspellDicts.it-it
-    inkscape
-    ispell
-    kodi
-    kubectl
-    kvm
-    libreoffice
-    libvirt
-    lyx
-    mate.caja
-    mate.caja-extensions
-    mc
-    mupdf
-    nextcloud-client
-    puddletag
-    (python3.withPackages (ps: with ps; [
-      flake8 black autopep8 rope setuptools yapf jedi]))
-    redshift
-    remmina
-    samba
-    scrcpy
-    signal-desktop
-    skopeo
-    sqlitebrowser
-    texlive.combined.scheme-medium
-    thunderbird
-    #tor-browser-bundle-bin
-    units
-    virtmanager
-    vlc
-    #wine-staging
-    #xonsh
-    xsettingsd
-    zeal
-
-    # visual
-    breeze-icons
-  ];
-  fonts.fonts =  with pkgs; [
-    carlito
-    dejavu_fonts
-    gentium
-    gentium-book-basic
-    liberation_ttf
-  ];
-}
+      # visual
+      breeze-icons
+    ];
+    fonts.fonts =  with pkgs; [
+      carlito
+      dejavu_fonts
+      gentium
+      gentium-book-basic
+      arkpandora_ttf
+    ];
+  }
