@@ -9,6 +9,7 @@
       "127.0.0.1" = [ "${hostName}.${domain}" "${hostName}" "localhost" ];
       "172.21.200.133" = ["intranet.apss.tn.it" "intranet"];
       "172.21.210.84" = ["intranet-new.apss.tn.it" "intranet-new"];
+      "151.101.242.217" = ["cache.nixos.org"];
     };
   # extraHosts = lib.readFile ./ads-hosts;
   # Open ports in the firewall.
