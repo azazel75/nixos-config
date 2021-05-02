@@ -94,7 +94,14 @@ in {
   hardware.pulseaudio.enable = true;
   hardware.trackpoint = {
     enable = true;
-    sensitivity = 170;
+  };
+
+  environment.etc."libinput/local-overrides.quirks" =  {
+    text = ''
+      [Trackpoint Override]
+      MatchUdevType=pointingstick
+      AttrTrackpointMultiplier=1.5
+    '';
   };
 
   nix.maxJobs = lib.mkDefault 8;
