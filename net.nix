@@ -3,6 +3,7 @@
   networking = rec {
     domain = "lan";
     search = [ "lan" ];
+    enableIPv6 = false;
     hostName = "ender";
     hosts = {
       "127.0.0.1" = [ "${hostName}.${domain}" "${hostName}" "localhost" ];
