@@ -167,6 +167,11 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   services.journald.extraConfig = ''
     MaxRetentionSec = 4 month
   '';
+
+  nix = {
+    trustedUsers = [ "root" "azazel" ];
+    useSandbox = "relaxed";
+  };
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("wheel")) {
