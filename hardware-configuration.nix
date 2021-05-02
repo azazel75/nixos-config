@@ -41,6 +41,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
+        ''x-systemd.idle-timeout="20min"''
       ];
     };
 
@@ -50,6 +51,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
+        ''x-systemd.idle-timeout="20min"''
       ];
     };
 
@@ -59,6 +61,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
+        ''x-systemd.idle-timeout="20min"''
       ];
     };
 
@@ -68,6 +71,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
+        ''x-systemd.idle-timeout="20min"''
       ];
     };
 
