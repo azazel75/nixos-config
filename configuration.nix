@@ -11,7 +11,6 @@
       ./net.nix
       ./packages.nix
       ./tlp.nix
-      ./nur.nix
       ./encryption.nix
       ./vpn.nix
     ];
