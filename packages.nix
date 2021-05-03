@@ -48,7 +48,7 @@
       #digikam
       dpkg
       elixir_1_10 erlang mimic
-      emacsGcc ripgrep fd clang #doom-emacs stuff
+      emacsPgtkGcc ripgrep fd clang #doom-emacs stuff
       evince
       flac
       gnome3.cheese
