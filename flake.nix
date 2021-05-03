@@ -15,7 +15,10 @@
           nixpkgs.nixosModules.notDetected
           ({ pkgs, ... }: {
             nix = {
-              registry.nixpkgs.flake = nixpkgs;
+              registry = {
+                nixpkgs.flake = nixpkgs;
+                nixos-hardware.flake = nixos-hw;
+              };
               binaryCaches = [
                 "https://nix-community.cachix.org/"
                 "https://srid.cachix.org"
