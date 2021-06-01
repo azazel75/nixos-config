@@ -56,7 +56,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
-        ''x-systemd.idle-timeout="20min"''
+        "x-systemd.idle-timeout=5min"
       ];
     };
 
@@ -66,7 +66,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
-        ''x-systemd.idle-timeout="20min"''
+        "x-systemd.idle-timeout=5min"
       ];
     };
 
@@ -76,7 +76,7 @@ in {
       options = [
         "noauto"
         "x-systemd.automount"
-        ''x-systemd.idle-timeout="20min"''
+        "x-systemd.idle-timeout=5min"
       ];
     };
 
@@ -87,7 +87,7 @@ in {
         "noatime"
         "noauto"
         "x-systemd.automount"
-        ''x-systemd.idle-timeout="20min"''
+        "x-systemd.idle-timeout=5min"
       ];
     };
 
@@ -98,7 +98,7 @@ in {
         "noatime"
         "noauto"
         "x-systemd.automount"
-        ''x-systemd.idle-timeout="20min"''
+        "x-systemd.idle-timeout=5min"
       ];
     };
   } // (keppel-shares ["azazel" "download" "keppel" "scansioni"]);
