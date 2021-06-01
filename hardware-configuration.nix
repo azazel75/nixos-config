@@ -1,5 +1,21 @@
 { config, lib, pkgs, ... }:
 let
+  keppel-share = name: {
+    name = "/mnt/keppel/${name}";
+    value = {
+      device = "//nas/${name}";
+      fsType = "cifs";
+      options = [
+        "noauto"
+        "credentials=/etc/nixos/secret/keppel_samba.cred"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=5min"
+        "uid=azazel"
+        "gid=users"
+      ];
+    };
+  };
+  keppel-shares = names: builtins.listToAttrs (map keppel-share names);
 in {
   imports = [
     ./x1-6th.nix
@@ -85,8 +101,7 @@ in {
         ''x-systemd.idle-timeout="20min"''
       ];
     };
-
-  };
+  } // (keppel-shares ["azazel" "download" "keppel" "scansioni"]);
 
   swapDevices = [ { device="/dev/system/swap"; } ];
 
