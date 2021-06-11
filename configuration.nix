@@ -13,6 +13,8 @@
       ./tlp.nix
       ./encryption.nix
       ./vpn.nix
+      ./xorg.nix
+      ./wayland.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -82,35 +84,6 @@
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   services.hardware.bolt.enable = true;
   services.gvfs.enable = true;
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "it";
-  services.xserver.xkbOptions = "eurosign:e";
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.enlightenment.enable = false;
-  services.xserver.desktopManager.mate.enable = false;
-  services.xserver.desktopManager.pantheon.enable = false;
-  services.xserver.windowManager.i3.enable = true;
-  services.xserver.windowManager.i3.extraSessionCommands = ''
-
-nm-applet &
-EDITOR=emacsclient
-DPI=210
-TERMINAL=sakura
-XCURSOR_SIZE=48
-export EDITOR TERMINAL XCURSOR_SIZE DPI
-echo Xft.dpi: $DPI | xrdb -merge
-xset s off
-xset dpms 600 600
-xset +dpms
-
-${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
-  '';
 
   sound.mediaKeys = {
     enable = true;
@@ -119,12 +92,6 @@ ${pkgs.xss-lock}/bin/xss-lock -- i3lock-color -n -B5&
   services.illum.enable = true;
   services.redshift.enable = true;
 
-  programs.sway = {
-    enable = false;
-    extraPackages = with pkgs; [
-      swaylock swayidle xwayland i3status dmenu
-    ];
-  };
 
   services.pcscd.enable = true;
   services.pcscd.plugins = [ pkgs.ccid pkgs.libacr38u];
