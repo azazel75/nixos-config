@@ -83,8 +83,13 @@
   hardware.pulseaudio.enable = true;
 
 
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+    ];
+  };
   services.hardware.bolt.enable = true;
   services.gvfs.enable = true;
 
