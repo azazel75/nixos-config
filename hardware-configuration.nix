@@ -31,6 +31,7 @@ in {
     # see https://github.com/NixOS/nixpkgs/pull/102106
     # and https://github.com/erpalma/throttled/issues/215
     "msr.allow_writes=on"
+    "i915.enable_dp_mst=0"
   ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
