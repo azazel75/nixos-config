@@ -38,10 +38,6 @@
     "net.ipv6.conf.all.forwarding" = "1";
   };
 
-  # See https://delta-xi.net/#056
-  #boot.initrd.prepend = [
-  #  "${/boot/acpi_override}"
-  #];
 
   boot.cleanTmpDir = true;
 
