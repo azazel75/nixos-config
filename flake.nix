@@ -7,33 +7,63 @@
   };
   outputs = { self, emacs, neuron, nixos-hw, nixpkgs }: {
 
-    nixosConfigurations.ender = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
-      modules =
-        [ ./configuration.nix
-          nixos-hw.nixosModules.lenovo-thinkpad-x1-6th-gen
-          nixpkgs.nixosModules.notDetected
-          ({ pkgs, ... }: {
-            nix = {
-              registry = {
-                nixpkgs.flake = nixpkgs;
-                nixos-hardware.flake = nixos-hw;
+    nixosConfigurations = {
+      ender = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules =
+          [ ./ender/configuration.nix
+            nixos-hw.nixosModules.lenovo-thinkpad-x1-6th-gen
+            nixpkgs.nixosModules.notDetected
+            ({ pkgs, ... }: {
+              nix = {
+                registry = {
+                  nixpkgs.flake = nixpkgs;
+                  nixos-hardware.flake = nixos-hw;
+                };
+                binaryCaches = [
+                  "https://nix-community.cachix.org/"
+                  "https://srid.cachix.org"
+                ];
+                binaryCachePublicKeys = [
+                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                  "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
+                ];
               };
-              binaryCaches = [
-                "https://nix-community.cachix.org/"
-                "https://srid.cachix.org"
+              nixpkgs.overlays = [
+                emacs.overlay
+                (self: super: { neuron = neuron.defaultPackage.${system}; })
               ];
-              binaryCachePublicKeys = [
-                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-                "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
+            })
+          ];
+      };
+      bean = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules =
+          [ ./bean/configuration.nix
+            nixos-hw.nixosModules.lenovo-thinkpad-x1-7th-gen
+            nixpkgs.nixosModules.notDetected
+            ({ pkgs, ... }: {
+              nix = {
+                registry = {
+                  nixpkgs.flake = nixpkgs;
+                  nixos-hardware.flake = nixos-hw;
+                };
+                binaryCaches = [
+                  "https://nix-community.cachix.org/"
+                  "https://srid.cachix.org"
+                ];
+                binaryCachePublicKeys = [
+                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                  "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
+                ];
+              };
+              nixpkgs.overlays = [
+                emacs.overlay
+                (self: super: { neuron = neuron.defaultPackage.${system}; })
               ];
-            };
-            nixpkgs.overlays = [
-              emacs.overlay
-              (self: super: { neuron = neuron.defaultPackage.${system}; })
-            ];
-          })
-        ];
+            })
+          ];
+      };
     };
   };
 }

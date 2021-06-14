@@ -8,38 +8,17 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./boot.nix
       ./net.nix
       ./packages.nix
       ./tlp.nix
-      ./encryption.nix
+      # ./encryption.nix
       ./vpn.nix
       ./xorg.nix
       ./wayland.nix
+      ./mounts.nix
+      ./sleep.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi";
-  };
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    "mem_sleep_default=deep"
-  ];
-  boot.loader.grub = {
-    efiSupport = true;
-    enable = true;
-    device = "nodev";
-    useOSProber = true;
-  };
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = "1";
-    "net.ipv6.conf.all.forwarding" = "1";
-  };
-
-
-  boot.cleanTmpDir = true;
 
   console = {
     keyMap = "it";
@@ -108,15 +87,8 @@
     extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" "video" "libvirtd"
                     "scanner" "lp" ];
     createHome = true;
-    initialHashedPassword = "";
     description = "Alberto Berti";
   };
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "19.03"; # Did you read the comment?
 
   virtualisation = {
     virtualbox.host = {
