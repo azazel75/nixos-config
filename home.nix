@@ -97,7 +97,7 @@
                "${mod}+Up" = "focus up";
 
                "${mod}+Ctrl+comma" = "move workspace to output left";
-               "${mod}+Ctrl+point" = "move workspace to output right";
+               "${mod}+Ctrl+period" = "move workspace to output right";
                "${mod}+Return" = "exec alacritty";
                "${mod}+Shift+c" = "reload";
                "${mod}+Shift+e" = "${pkgs.sway}/bin/swaynag 'Exit Sway?' -b 'Yes, exit Sway' '${pkgs.sway}/bin/${smsg} exit'";
