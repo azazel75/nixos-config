@@ -16,6 +16,9 @@
         killall
         nmap
         # p7zip # insecure
+        openconnect
+        pciutils
+        unzip
 
         # apps
         gnupg openssl python3 stunnel sysstat tcpdump
@@ -68,6 +71,9 @@
         emacsPgtkGcc ripgrep fd clang #doom-emacs stuff
         evince
         flac
+        fortune
+        git-crypt
+        gnome.networkmanagerapplet
         gnome3.cheese
         google-chrome
         hunspell
