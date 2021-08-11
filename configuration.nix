@@ -74,7 +74,7 @@
     volumeStep = "5%";
   };
   services.illum.enable = true;
-  services.redshift.enable = true;
+  services.redshift.enable = !config.system.useWayland;
 
 
   services.pcscd.enable = true;
