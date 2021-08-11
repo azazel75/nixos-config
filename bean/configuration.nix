@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
   let
-    wayland-enable = false;
   in {
     imports =
       [ # Include the results of the hardware scan.
@@ -10,10 +9,10 @@
         ../configuration.nix
       ];
     programs.sway = {
-      enable = wayland-enable;
+      enable = false;
     };
     services.greetd = {
-      enable = wayland-enable;
+      enable = false; # wayland-enable;
     };
   console = {
     # Early configure the console to make the font readable from the

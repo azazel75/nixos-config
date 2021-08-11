@@ -15,8 +15,8 @@
       # ./encryption.nix
       ./vpn.nix
       ./xorg.nix
-      ./wayland.nix
       ./window_system.nix
+      #./wayland.nix
       ./mounts.nix
       ./sleep.nix
     ];

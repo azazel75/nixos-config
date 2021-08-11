@@ -1,11 +1,12 @@
 {
   inputs = {
     emacs.url = "github:nix-community/emacs-overlay";
+    home-manager.url = "github:nix-community/home-manager";
     neuron.url = "github:srid/neuron";
     nixos-hw.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
-  outputs = { self, emacs, neuron, nixos-hw, nixpkgs }: {
+  outputs = { self, emacs, home-manager, neuron, nixos-hw, nixpkgs }: {
 
     nixosConfigurations = {
       ender = nixpkgs.lib.nixosSystem rec {
@@ -62,6 +63,12 @@
                 (self: super: { neuron = neuron.defaultPackage.${system}; })
               ];
             })
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.azazel = import ./home.nix;
+            }
           ];
       };
     };
