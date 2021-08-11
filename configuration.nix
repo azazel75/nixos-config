@@ -86,7 +86,7 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "docker" "vboxusers" "cdrom" "video" "libvirtd"
-                    "scanner" "lp" ];
+                    "scanner" "lp" "i2c" "input" ];
     createHome = true;
     description = "Alberto Berti";
   };

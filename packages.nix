@@ -60,6 +60,9 @@
         #digikam
         dpkg
 
+        # brightness of external displays
+        ddcutil
+        ddcui
 
         elixir_1_10 erlang mimic
         emacsPgtkGcc ripgrep fd clang #doom-emacs stuff
