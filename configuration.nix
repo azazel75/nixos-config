@@ -121,13 +121,6 @@
     trustedUsers = [ "root" "azazel" ];
     useSandbox = "relaxed";
   };
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("wheel")) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
   # fix issues with k3d and docker
   # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
   systemd.enableUnifiedCgroupHierarchy = false;
