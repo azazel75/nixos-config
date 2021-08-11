@@ -2,11 +2,11 @@
   "nodes": {
     "emacs": {
       "locked": {
-        "lastModified": 1623141218,
-        "narHash": "sha256-Nv8bUo7m1RW4oi9gFCqXWnvo3ikJM46c4Ggpqnn6oG4=",
+        "lastModified": 1628673814,
+        "narHash": "sha256-tQP1VzgjuyCLgi0B/uQTIiLLCyl4lXgNiKa782sHCO4=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "280d364dc803002aa8afb64fea4f2bf6d59ce4d5",
+        "rev": "bcdec43110889f63968b653cacd1bc542d8ba42b",
         "type": "github"
       },
       "original": {
@@ -46,18 +46,36 @@
         "type": "github"
       }
     },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1628631012,
+        "narHash": "sha256-/QEIuwoWeELkAZAOx3uqLr1xsVeGdo8KKgnDUhQtcr8=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "a4a83078976025f2dc6aaca35b20880735f7baa3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "neuron": {
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1621823698,
-        "narHash": "sha256-FhOtMyxv3AR1u+GXulR51hGx9TFRuXOFowC00p7oDU4=",
+        "lastModified": 1628429501,
+        "narHash": "sha256-Vf/zB3qDA24hGXcVKRZYx7PGTGR2k+kp4JuLFJFaTx8=",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "164956fdab8242b78e6c51753aa3d2f0b3fdc2fc",
+        "rev": "998fce27ccc91231ef9757e2bebeb39327850092",
         "type": "github"
       },
       "original": {
@@ -68,11 +86,11 @@
     },
     "nixos-hw": {
       "locked": {
-        "lastModified": 1623143341,
-        "narHash": "sha256-a8NjpJVvJkb3ehu/KP1OaWwlRexom2D7lQEH5uCO9yA=",
+        "lastModified": 1628440507,
+        "narHash": "sha256-xXnG0f3fuuCbBpiVuzsIOd59AMgTGNE0/tAhMV+oEHY=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "fccbee72df707c3fb074854668deee6e1ff02351",
+        "rev": "7da029f26849f8696ac49652312c9171bf9eb170",
         "type": "github"
       },
       "original": {
@@ -83,27 +101,40 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1620278081,
-        "narHash": "sha256-KcCxMcUFIqpZArUqHcLTdBXKJ1bsHnFdPALyB9auV7M=",
+        "lastModified": 1628605906,
+        "narHash": "sha256-XqCCPDIIG4zMPJ/V757FgzGM2zypcRb1BY7u/DqHKX0=",
+        "path": "/nix/store/p0h1j2zd5hm9wj3513kg82hf81g24xka-source",
+        "rev": "fe01052444c1d66ed6ef76df2af798c9769e9e79",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1627441313,
+        "narHash": "sha256-BekfolOuhZiwoXevbRocZu9Ba4+RGRdAp0QySL6koxM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "123db833485edf8df83f95ef2888113390768686",
+        "rev": "9ee8bd188933750be0584f285daf9a295d0c8930",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "123db833485edf8df83f95ef2888113390768686",
+        "rev": "9ee8bd188933750be0584f285daf9a295d0c8930",
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
-        "lastModified": 1622966049,
-        "narHash": "sha256-6g+28v94ISkVk9TBSsITVOnB2slK8plieWPIF2jo/l0=",
+        "lastModified": 1628605906,
+        "narHash": "sha256-XqCCPDIIG4zMPJ/V757FgzGM2zypcRb1BY7u/DqHKX0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fbfb79400a08bf754e32b4d4fc3f7d8f8055cf94",
+        "rev": "fe01052444c1d66ed6ef76df2af798c9769e9e79",
         "type": "github"
       },
       "original": {
@@ -116,9 +147,10 @@
     "root": {
       "inputs": {
         "emacs": "emacs",
+        "home-manager": "home-manager",
         "neuron": "neuron",
         "nixos-hw": "nixos-hw",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
