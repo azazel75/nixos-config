@@ -104,7 +104,7 @@
       ];
     };
     libvirtd = {
-      enable = false;
+      enable = true;
     };
   };
   services.printing.enable = true;
