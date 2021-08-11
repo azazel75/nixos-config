@@ -92,6 +92,7 @@
   };
 
   virtualisation = {
+    spiceUSBRedirection.enable = true;
     virtualbox.host = {
       enable = true;
       enableExtensionPack = false;
