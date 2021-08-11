@@ -10,7 +10,7 @@
     text = ''
       [Trackpoint Override]
       MatchUdevType=pointingstick
-      AttrTrackpointMultiplier=1.5
+      AttrTrackpointMultiplier=0.8
     '';
   };
 
