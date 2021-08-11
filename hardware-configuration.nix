@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: {
 
-  hardware.pulseaudio.enable = true;
-  hardware.trackpoint = {
-    enable = true;
+  hardware = {
     i2c.enable = true; # allow connected display discovery
+    pulseaudio.enable = true;
+    trackpoint.enable = true;
   };
 
   environment.etc."libinput/local-overrides.quirks" =  {
