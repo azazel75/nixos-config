@@ -1,7 +1,7 @@
 # See available options at https://nix-community.github.io/home-manager/options.html
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nixosConfig, ... }:
  let
-   waylandEnabled = true;
+   waylandEnabled = nixosConfig.system.useWayland;
  in {
    home.packages = with pkgs; [
      calibre
