@@ -36,6 +36,7 @@
          enable = waylandEnabled;
          config =
            let
+             bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
              font = {
                names = ["monospace"];
                size = 14.0;
@@ -120,6 +121,9 @@
                XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
                XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
                XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+               XF86Display = "exec ${pkgs.wdisplays}/bin/wdisplays";
+               XF86MonBrightnessDown = "exec ${bctl} s 5%-";
+               XF86MonBrightnessUp = "exec ${bctl} s 5%+";
                XF86Search = "exec ${lockCmd}";
                XF86Tools = "exec ${lockCmd}";
              } // (genWorkspaceKey ["${mod}"] "workspace")
