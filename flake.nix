@@ -67,7 +67,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.azazel = import ./home.nix;
+              home-manager.users.azazel = import ./azazel;
             }
           ];
       };
