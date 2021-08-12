@@ -18,6 +18,7 @@
         # p7zip # insecure
         openconnect
         pciutils
+        pstree
         unzip
 
         # apps
@@ -54,6 +55,7 @@
         aspellDicts.en
         aspellDicts.it
         borgbackup
+        brave
         brightnessctl
         calibre
         cachix
@@ -89,10 +91,13 @@
         lyx
         mate.caja
         mate.caja-extensions
+        mate.eom
         mc
         #mupdf
         neuron
         nextcloud-client
+        oathToolkit
+        pavucontrol
         puddletag
         python3
         remmina
@@ -101,6 +106,7 @@
         scrcpy
         signal-desktop
         skopeo
+        squeezelite
         sqlitebrowser
         (texlive.combine {
               inherit (texlive) scheme-medium collection-langitalian; # caption wrapfig;
@@ -118,6 +124,9 @@
         # visual
         breeze-icons
       ]
+      (optionals waylandEnabled [
+        wdisplays
+      ])
       (optionals (! waylandEnabled) [
         redshift
       ])
