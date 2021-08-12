@@ -88,6 +88,10 @@
              right = "ograve";
              up = "l";
              keybindings = {
+               "${mod}+Ctrl+Down" = "move workspace to output down";
+               "${mod}+Ctrl+Left" = "move workspace to output left";
+               "${mod}+Ctrl+Right" = "move workspace to output right";
+               "${mod}+Ctrl+Up" = "move workspace to output up";
                "${mod}+Shift+Down" = "move down";
                "${mod}+Shift+Left" = "move left";
                "${mod}+Shift+Right" = "move right";
@@ -97,8 +101,6 @@
                "${mod}+Right" = "focus right";
                "${mod}+Up" = "focus up";
 
-               "${mod}+Ctrl+comma" = "move workspace to output left";
-               "${mod}+Ctrl+period" = "move workspace to output right";
                "${mod}+Return" = "exec alacritty";
                "${mod}+Shift+c" = "reload";
                "${mod}+Shift+e" = "${pkgs.sway}/bin/swaynag 'Exit Sway?' -b 'Yes, exit Sway' '${pkgs.sway}/bin/${smsg} exit'";
