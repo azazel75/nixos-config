@@ -96,6 +96,7 @@
         #mupdf
         neuron
         nextcloud-client
+        nyxt
         oathToolkit
         pavucontrol
         puddletag

@@ -61,6 +61,7 @@
               nixpkgs.overlays = [
                 emacs.overlay
                 (self: super: { neuron = neuron.defaultPackage.${system}; })
+                (import ./pkgs)
               ];
             })
             home-manager.nixosModules.home-manager
