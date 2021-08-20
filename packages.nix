@@ -126,9 +126,13 @@
         breeze-icons
       ]
       (optionals waylandEnabled [
+        (pass-wayland.withExtensions (exts: with exts; [ pass-genphrase
+                                                        pass-import
+                                                        pass-otp ]))
         wdisplays
       ])
       (optionals (! waylandEnabled) [
+        pass
         redshift
       ])
     ]);
