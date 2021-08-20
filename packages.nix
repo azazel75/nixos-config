@@ -29,6 +29,7 @@
         # pcsctools
         libacr38u opensc
         mate.mate-notification-daemon
+        xdg-utils
       ]
       (optionals waylandEnabled [
         firefox-wayland

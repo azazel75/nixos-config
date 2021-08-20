@@ -120,6 +120,17 @@
     '';
     trustedUsers = [ "root" "azazel" ];
     useSandbox = "relaxed";
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+      gtkUsePortal = true;
+      wlr = {
+        enable = true;
+      };
+    };
   };
   # fix issues with k3d and docker
   # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
