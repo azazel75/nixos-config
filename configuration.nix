@@ -25,13 +25,20 @@
     keyMap = "it";
   };
 
+  environment.homeBinInPath = true;
+
   #Select internationalisation properties.
   i18n.defaultLocale = "it_IT.UTF-8";
-
-  environment.homeBinInPath = true;
   location = import ./secret/location.nix;
-  # Set your time zone.
-  time.timeZone = "Europe/Rome";
+
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    trustedUsers = [ "root" "azazel" ];
+    useSandbox = "relaxed";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -42,45 +49,45 @@
     enableSSHSupport = true;
   };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-  };
-  services.connman.enable = false;
-
-  #services.teamviewer.enable = true;
-
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-
-  hardware.opengl = {
+  sound = {
     enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-    ];
+    mediaKeys = {
+      enable = true;
+      volumeStep = "5%";
+    };
   };
-  services.hardware.bolt.enable = true;
-  services.gvfs.enable = true;
 
-  sound.mediaKeys = {
-    enable = true;
-    volumeStep = "5%";
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+    connman.enable = false;
+    fstrim.enable = true;
+    fwupd.enable = true;
+    gvfs.enable = true;
+    hardware.bolt.enable = true;
+    illum.enable = true;
+    journald.extraConfig = ''
+      MaxRetentionSec = 4 month
+      '';
+    openssh.enable = true;
+    pcscd.enable = true;
+    pcscd.plugins = [ pkgs.ccid pkgs.libacr38u];
+    # see https://nixos.wiki/wiki/Firefox
+    pipewire.enable = true;
+    printing.enable = true;
+    redshift.enable = !config.system.useWayland;
+    # teamviewer.enable = true;
   };
-  services.illum.enable = true;
-  services.redshift.enable = !config.system.useWayland;
 
+  # fix issues with k3d and docker
+  # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
+  systemd.enableUnifiedCgroupHierarchy = false;
 
-  services.pcscd.enable = true;
-  services.pcscd.plugins = [ pkgs.ccid pkgs.libacr38u];
-  services.fwupd.enable = true;
-  services.fstrim.enable = true;
+  # Set your time zone.
+  time.timeZone = "Europe/Rome";
 
   users.users.azazel = {
     isNormalUser = true;
@@ -94,7 +101,7 @@
   virtualisation = {
     spiceUSBRedirection.enable = true;
     virtualbox.host = {
-      enable = true;
+      enable = false;
       enableExtensionPack = false;
     };
     docker = {
@@ -106,20 +113,9 @@
     libvirtd = {
       enable = true;
     };
+    anbox.enable = false;
   };
-  services.printing.enable = true;
 
-  services.journald.extraConfig = ''
-    MaxRetentionSec = 4 month
-  '';
-
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    trustedUsers = [ "root" "azazel" ];
-    useSandbox = "relaxed";
   xdg = {
     portal = {
       enable = true;
@@ -132,7 +128,4 @@
       };
     };
   };
-  # fix issues with k3d and docker
-  # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
-  systemd.enableUnifiedCgroupHierarchy = false;
 }
