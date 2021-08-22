@@ -26,8 +26,9 @@
           config =
             let
               bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+              fname = "monospace";
               font = {
-                names = ["monospace"];
+                names = [ fname ];
                 size = 14.0;
               };
               gnome-schema = "org.gnome.desktop.interface";
@@ -53,7 +54,7 @@
                     ) 10);
               lg-5k = "Goldstar Company Ltd LG HDR 5K 904NTTQ6N889";
               lockCmd = "${pkgs.swaylock}/bin/swaylock -c 000000";
-              menu = "${pkgs.bemenu}/bin/bemenu-run -b -p »";
+              menu = "${pkgs.bemenu}/bin/bemenu-run -b -p » --fn 'pango:${fname} ${builtins.toString font.size}'";
               mod = "Mod4";
               smsg = "${pkgs.sway}/bin/swaymsg";
             in {
