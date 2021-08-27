@@ -126,6 +126,13 @@
         # visual
         breeze-icons
       ]
+      [
+        # rust
+        cargo
+        rustc
+        rust-analyzer
+        rustup
+      ]
       (optionals waylandEnabled [
         (pass-wayland.withExtensions (exts: with exts; [ pass-genphrase
                                                         pass-import
