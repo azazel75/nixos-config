@@ -91,6 +91,14 @@
                 "${mod}+Right" = "focus right";
                 "${mod}+Up" = "focus up";
 
+                "${mod}+Ctrl+b" = "exec brave";
+                "${mod}+Ctrl+c" = "exec chrome";
+                "${mod}+Ctrl+e" = "exec emacs";
+                "${mod}+Ctrl+Shift+e" = "exec emacs --with-profile gnus -f mine-emacs";
+                "${mod}+Ctrl+f" = "exec firefox";
+                "${mod}+Ctrl+k" = "exec kodi";
+                "${mod}+Ctrl+n" = "exec nyxt-ok.sh";
+                "${mod}+Ctrl+s" = "exec signal";
                 "${mod}+Return" = "exec alacritty";
                 "${mod}+Shift+c" = "reload";
                 "${mod}+Shift+e" = "${pkgs.sway}/bin/swaynag 'Exit Sway?' -b 'Yes, exit Sway' '${pkgs.sway}/bin/${smsg} exit'";
