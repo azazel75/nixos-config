@@ -124,8 +124,6 @@
                 XF86Display = "exec ${pkgs.wdisplays}/bin/wdisplays";
                 XF86MonBrightnessDown = "exec ${bctl} s 5%-";
                 XF86MonBrightnessUp = "exec ${bctl} s 5%+";
-                XF86Search = "exec ${lockCmd}";
-                XF86Tools = "exec ${lockCmd}";
               } // (genWorkspaceKey ["${mod}"] "workspace")
                 // (genWorkspaceKey ["${mod}" "Shift"] "move container to workspace");
               menu = "${menu}";
@@ -169,17 +167,23 @@
                 # start polkit pinentry for priviledge escalation (virt-manager) also used
                 # by gnome utils like nm-connection-editor
                 { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
+		{ command = "${pkgs.zeal}/bin/zeal"; }
               ];
               terminal = "${pkgs.alacritty}/bin/alacritty";
               workspaceAutoBackAndForth = true;
             };
-          extraConfig = ''
-             bindswitch --reload --locked lid:on output ${internal-lcd} disable
-             bindswitch --reload --locked lid:off output ${internal-lcd} enable
-             default_border normal
-             default_floating_border pixel
-             xwayland enable
-          '';
+          extraConfig =
+            let
+              enterIdle = "${pkgs.procps}/bin/pkill -USR1 swayidle";
+              concat = builtins.concatStringsSep;
+            in ''
+              ${concat "\n" (map (key: "bindsym --no-repeat ${key} exec ${enterIdle}") [ "XF86Search" "XF86Tools" ])}
+              bindswitch --reload --locked lid:on output ${internal-lcd} disable
+              bindswitch --reload --locked lid:off output ${internal-lcd} enable
+              default_border normal
+              default_floating_border pixel
+              xwayland enable
+            '';
           extraSessionCommands = ''
             # SDL:
             export SDL_VIDEODRIVER=wayland
