@@ -19,8 +19,7 @@
 
   # Fix font sizes in X
   services.xserver.dpi = 210;
-  fonts.fontconfig.dpi = 210;
-
+ 
   # Fix sizes of GTK/GNOME ui elements
   environment.variables = {
     GDK_SCALE = lib.mkDefault "2";
