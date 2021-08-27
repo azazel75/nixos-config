@@ -5,9 +5,12 @@
     i2c.enable = true; # allow connected display discovery
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [
+      driSupport = true; # it is true by default
+      extraPackages = with pkgs; [ # The very same list is present in nixos-hardware
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
       ];
     };
     pulseaudio.enable = true;
