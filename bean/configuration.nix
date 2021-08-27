@@ -26,7 +26,6 @@
 
   # Fix font sizes in X
   services.xserver.dpi = 162;
-  fonts.fontconfig.dpi = 162;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
