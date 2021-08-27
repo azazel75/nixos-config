@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   hardware = {
+    cpu.intel.updateMicrocode = true;
     i2c.enable = true; # allow connected display discovery
     opengl = {
       enable = true;
