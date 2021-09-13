@@ -110,6 +110,9 @@
     libvirtd = {
       enable = true;
     };
+    podman = {
+      enable = true;
+    };
     anbox.enable = false;
   };
 
