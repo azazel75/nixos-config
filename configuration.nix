@@ -78,10 +78,7 @@
     # teamviewer.enable = true;
   };
 
-  # fix issues with k3d and docker
-  # See https://github.com/rancher/k3d/issues/493#issuecomment-814290147
-  systemd.enableUnifiedCgroupHierarchy = false;
-
+  systemd.enableUnifiedCgroupHierarchy = true;
   # Set your time zone.
   time.timeZone = "Europe/Rome";
 
