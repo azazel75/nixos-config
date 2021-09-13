@@ -2,6 +2,16 @@
   let
     inherit (lib) mkMerge optionals;
     waylandEnabled = config.system.useWayland;
+    kodi = if waylandEnabled then pkgs.kodi-wayland else pkgs.kodi;
+    kodiDistro = kodi.withPackages (kpkgs: with kpkgs; [
+      inputstreamhelper
+      inputstream-adaptive
+      inputstream-ffmpegdirect
+      inputstream-rtmp
+      pvr-iptvsimple
+      vfs-sftp
+      vfs-libarchive
+    ]);
   in {
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; (mkMerge [
@@ -33,13 +43,11 @@
       ]
       (optionals waylandEnabled [
         firefox-wayland
-        kodi-wayland
         glib # gsettings needed in sway's conf
         qt5.qtwayland
       ])
       (optionals (! waylandEnabled) [
         firefox
-        kodi
       ])
     ]);
 
@@ -84,7 +92,7 @@
         hunspellDicts.it-it
         inkscape
         ispell
-        #kodi
+        kodiDistro
         kubectl
         kvm
         libreoffice
