@@ -43,10 +43,6 @@
   # started in user sessions.
   programs.adb.enable = true;
   programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   # Enable sound.
   sound = {
@@ -63,6 +59,7 @@
       nssmdns = true;
     };
     connman.enable = false;
+    dbus.packages = [ pkgs.gcr ]; # for gnome3 pinentry
     fstrim.enable = true;
     fwupd.enable = true;
     gvfs.enable = true;

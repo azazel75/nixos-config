@@ -6,6 +6,7 @@
   in {
     imports = [
       ./git.nix
+      ./gpg.nix
       ./wayland.nix
     ];
     home.packages = with pkgs; [
