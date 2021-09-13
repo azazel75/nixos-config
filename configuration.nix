@@ -79,6 +79,10 @@
   };
 
   systemd.enableUnifiedCgroupHierarchy = true;
+  # rootless containers https://rootlesscontaine.rs/getting-started/common/cgroup2/#enabling-cpu-cpuset-and-io-delegation
+  systemd.services."user@".serviceConfig = {
+    Delegate = "cpu cpuset io memory pids";
+  };
   # Set your time zone.
   time.timeZone = "Europe/Rome";
 
