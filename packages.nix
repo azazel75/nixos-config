@@ -13,11 +13,20 @@
       vfs-libarchive
     ]);
   in {
+    programs.steam.enable = true;
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; (mkMerge [
       [
         # utils
-        wget vim less tree tmux zile sshfs nfs-utils cifs-utils
+        wget
+        vim
+        less
+        tree
+        tmux
+        zile
+        sshfs
+        nfs-utils
+        cifs-utils
         cpio dhcp
         file
         htop
@@ -49,6 +58,12 @@
       (optionals (! waylandEnabled) [
         firefox
       ])
+      [
+        # temporary startx
+        dmenu
+        i3
+        i3status
+      ]
     ]);
 
     users.users.azazel.packages = with pkgs; (mkMerge [
@@ -72,6 +87,7 @@
         crip # terminal ripper
         # darcs # marked as broken
         #digikam
+        dbeaver
         dpkg
 
         # brightness of external displays
@@ -92,6 +108,7 @@
         hunspellDicts.it-it
         inkscape
         ispell
+        # kodi
         kodiDistro
         kubectl
         kvm
@@ -127,7 +144,6 @@
         virtmanager
         vlc
         #wine-staging
-        xonsh
         #xsettingsd
         zeal
 
@@ -142,9 +158,9 @@
         rustup
       ]
       (optionals waylandEnabled [
-        (pass-wayland.withExtensions (exts: with exts; [ pass-genphrase
-                                                        pass-import
-                                                        pass-otp ]))
+        # (pass-wayland.withExtensions (exts: with exts; [ pass-genphrase
+        #                                                 pass-import
+        #                                                 pass-otp ]))
         wdisplays
       ])
       (optionals (! waylandEnabled) [
