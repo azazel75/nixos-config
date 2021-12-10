@@ -1,6 +1,15 @@
 { config, lib, pkgs, ... }: {
 
   hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
+    };
     cpu.intel.updateMicrocode = true;
     i2c.enable = true; # allow connected display discovery
     opengl = {
@@ -13,7 +22,14 @@
         libvdpau-va-gl
       ];
     };
-    pulseaudio.enable = true;
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+      extraModules =  [ pkgs.pulseaudio-modules-bt ];
+      extraConfig = ''
+        load-module module-switch-on-connect
+      '';
+    };
     trackpoint.enable = true;
   };
 

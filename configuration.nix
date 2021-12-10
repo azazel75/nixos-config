@@ -58,6 +58,7 @@
       enable = true;
       nssmdns = true;
     };
+    blueman.enable = true;
     connman.enable = false;
     dbus.packages = [ pkgs.gcr ]; # for gnome3 pinentry
     fstrim.enable = true;
