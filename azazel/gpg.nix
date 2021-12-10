@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       auto-key-locate = "local";
-      default-key = "E3B5C55999D67CF9";
+      default-key = "E3B5C55999D67CF9"; # key id from "gpg -K"
       keyserver = "hkp://keys.gnupg.net";
       use-agent = true;
       utf8-strings = true;
@@ -13,14 +13,14 @@
     enable = true;
     enableExtraSocket = true;
     enableSshSupport = true;
-    extraConfig = ''
+    extraConfig = ''  # cat ~/.gnupg/gpg-agent.conf
       allow-emacs-pinentry
       default-key D7F2BD0F01F41A581AC559C46FBEA082628584C9
       detailed-view
       display :0
     '';
     pinentryFlavor = "gnome3";
-    sshKeys = [
+    sshKeys = [ # cat ~/.gnupg/sshcontrol
       #"7EA85C64EB4D4986403EDE66B54F0436AB0E86E6" # id_rsa
       #"8326866A208EA6D35030067A1810F5AD31CC8AA0" # id_ed25519
       #"7EA85C64EB4D4986403EDE66B54F0436AB0E86E6" # old gpg rsa2048
