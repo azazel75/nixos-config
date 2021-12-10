@@ -49,7 +49,7 @@
       };
 
       "/mnt/portable/sabrent1" = {
-        device = "UUID=887c63c5-e9b4-4c87-b18f-2c521c27f715";
+        device = "UUID=ea461817-ab57-4fec-958f-a7e93591a36b";
         fsType = "btrfs";
         options = [
           "noatime"
