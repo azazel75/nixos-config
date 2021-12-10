@@ -43,6 +43,7 @@
   # started in user sessions.
   programs.adb.enable = true;
   programs.mtr.enable = true;
+  programs.xonsh.enable = true;
 
   # Enable sound.
   sound = {
@@ -94,6 +95,7 @@
                     "scanner" "lp" "i2c" "input" ];
     createHome = true;
     description = "Alberto Berti";
+    shell = pkgs.xonsh;
   };
 
   virtualisation = {
