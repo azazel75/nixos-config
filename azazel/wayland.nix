@@ -101,7 +101,7 @@
                 "${mod}+Ctrl+s" = "exec signal";
                 "${mod}+Return" = "exec alacritty";
                 "${mod}+Shift+c" = "reload";
-                "${mod}+Shift+e" = "${pkgs.sway}/bin/swaynag 'Exit Sway?' -b 'Yes, exit Sway' '${pkgs.sway}/bin/${smsg} exit'";
+                "${mod}+Shift+e" = "exec ${pkgs.sway}/bin/swaynag -m 'Exit Sway?' -b 'Yes, exit Sway' '${smsg} exit'";
                 "${mod}+Shift+minus" = "move scratchpad";
                 "${mod}+Shift+q" = "kill";
                 "${mod}+Shift+r" = "restart";
