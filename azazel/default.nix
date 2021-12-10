@@ -12,7 +12,7 @@
     home.packages = with pkgs; [
       calibre
       wl-clipboard
-      firefox-nightly
+      # firefox-nightly
     ];
     home.sessionVariables = mkMerge [
       {
