@@ -1,14 +1,16 @@
 {
   inputs = {
     emacs.url = "github:nix-community/emacs-overlay";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neuron.url = "github:srid/neuron";
     nightly-ff.url = "github:colemickens/flake-firefox-nightly";
     nixos-hw.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs = { self, emacs, home-manager, neuron, nightly-ff, nixos-hw, nixpkgs }: {
-
     nixosConfigurations = {
       ender = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -72,7 +74,7 @@
               ];
             })
             home-manager.nixosModules.home-manager
-            {
+           {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.azazel = import ./azazel;
