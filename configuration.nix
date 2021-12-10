@@ -101,7 +101,7 @@
   virtualisation = {
     spiceUSBRedirection.enable = true;
     virtualbox.host = {
-      enable = false;
+      enable = true;
       enableExtensionPack = false;
     };
     docker = {
