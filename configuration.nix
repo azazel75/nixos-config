@@ -12,7 +12,7 @@
       ./net.nix
       ./packages.nix
       ./tlp.nix
-      # ./encryption.nix
+      ./encryption.nix
       ./vpn.nix
       ./xorg.nix
       ./window_system.nix
