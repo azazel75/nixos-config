@@ -32,6 +32,24 @@
           font.size = 16;
         };
       };
+      foot = {
+        enable = true;
+        settings = {
+          main = {
+            term = "xterm-256color";
+
+            font = "monospace:size=10";
+            dpi-aware = "yes";
+          };
+          bell = {
+            urgent = true;
+            notify = true;
+          };
+          mouse = {
+            hide-when-typing = "yes";
+          };
+        };
+      };
       bash.enable = true;
     };
  }
