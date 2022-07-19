@@ -52,16 +52,6 @@
                   nixpkgs.flake = nixpkgs;
                   nixos-hardware.flake = nixos-hw;
                 };
-                binaryCaches = [
-                  "https://nix-community.cachix.org/"
-                  "https://nixpkgs-wayland.cachix.org"
-                  "https://srid.cachix.org"
-                ];
-                binaryCachePublicKeys = [
-                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-                  "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
-                  "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-                ];
               };
               nixpkgs.overlays = [
                 emacs.overlay

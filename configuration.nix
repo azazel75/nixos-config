@@ -31,12 +31,26 @@
   location = import ./secret/location.nix;
 
   nix = {
+    nixPath = [
+      "nixpkgs=${pkgs.path}"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
     package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    trustedUsers = [ "root" "azazel" ];
-    useSandbox = "relaxed";
+    settings = {
+      experimental-features = "nix-command flakes";
+      sandbox = "relaxed";
+      substituters = [
+        "https://nix-community.cachix.org/"
+        "https://nixpkgs-wayland.cachix.org"
+        "https://srid.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      ];
+      trusted-users = [ "root" "azazel" ];
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
