@@ -10,9 +10,15 @@
       ./wayland.nix
     ];
     home.packages = with pkgs; [
-      calibre
+      # calibre # error with python3.9-apsw-3.37.0-r1.drv 2022-04-09
       wl-clipboard
+      grim
+      slurp
+      wayland
       # firefox-nightly
+      openzone-cursors
+      ubuntu-themes
+      virt-manager
     ];
     home.sessionVariables = mkMerge [
       {

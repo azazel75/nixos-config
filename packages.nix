@@ -13,7 +13,7 @@
       vfs-libarchive
     ]);
   in {
-    programs.steam.enable = true;
+    programs.steam.enable = false;
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; (mkMerge [
       [
@@ -94,13 +94,13 @@
         ddcutil
         ddcui
 
-        elixir_1_10 erlang mimic
-        emacsPgtkGcc ripgrep fd clang #doom-emacs stuff
+        elixir_1_12 erlang mimic
+        emacsPgtkNativeComp ripgrep fd clang #doom-emacs stuff
         evince
         flac
         fortune
         git-crypt
-        gnome.networkmanagerapplet
+        networkmanagerapplet
         gnome3.cheese
         google-chrome
         hunspell
@@ -111,7 +111,7 @@
         # kodi
         kodiDistro
         kubectl
-        kvm
+        qemu_kvm
         libreoffice
         libvirt
         lyx
@@ -138,7 +138,7 @@
         (texlive.combine {
               inherit (texlive) scheme-medium collection-langitalian; # caption wrapfig;
         })
-        thunderbird
+        # thunderbird
         #tor-browser-bundle-bin
         units
         virtmanager

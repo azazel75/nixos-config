@@ -5,7 +5,7 @@
       patches = (oldAttrs.patches or []) ++ [
         # Add support for enabling unlocking when resuming from sleep
         # See: https://github.com/Drive-Trust-Alliance/sedutil/pull/190
-	./sedutil-190.patch
+	      ./sedutil-190.patch
       ];
     }));
   };

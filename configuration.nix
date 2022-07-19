@@ -57,6 +57,7 @@
   # started in user sessions.
   programs.adb.enable = true;
   programs.mtr.enable = true;
+  programs.sysdig.enable = false;
   programs.xonsh.enable = true;
 
   # Enable sound.
@@ -67,6 +68,9 @@
       volumeStep = "5%";
     };
   };
+
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
 
   services = {
     avahi = {
@@ -123,8 +127,8 @@
   virtualisation = {
     spiceUSBRedirection.enable = true;
     virtualbox.host = {
-      enable = true;
-      enableExtensionPack = false;
+      enable = false;
+      enableExtensionPack = true;
     };
     docker = {
       enable = true;
@@ -133,12 +137,14 @@
       ];
     };
     libvirtd = {
+      # it needs "spiceUSBRedirection.enable = true" to redirect USB devices
       enable = true;
     };
     podman = {
-      enable = true;
+      enable = false;
     };
     anbox.enable = false;
+    containers.enable = false;
   };
 
   xdg = {
