@@ -13,7 +13,7 @@
       pull.rebase = "false";
     };
     includes = [{
-      condition = "gitdir:~/wip/endian";
+      condition = "gitdir:~/wip/endian/**";
       contents = { user.email = "a.berti@endian.com"; };
     }];
     userName = "Alberto Berti";
