@@ -61,7 +61,7 @@
 
   # Enable sound.
   sound = {
-    enable = true;
+    enable = false;
     mediaKeys = {
       enable = true;
       volumeStep = "5%";
@@ -87,8 +87,16 @@
     openssh.enable = true;
     pcscd.enable = true;
     pcscd.plugins = [ pkgs.ccid pkgs.libacr38u];
-    # see https://nixos.wiki/wiki/Firefox
-    pipewire.enable = true;
+    # see https://nixos.wiki/wiki/PipeWire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+      wireplumber.enable = true;
+    };
     printing.enable = true;
     redshift.enable = !config.system.useWayland;
     # teamviewer.enable = true;

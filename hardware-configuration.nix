@@ -23,16 +23,15 @@
       ];
     };
     pulseaudio = {
-      enable = true;
+      enable = false;
       package = pkgs.pulseaudioFull;
       extraModules =  [ pkgs.pulseaudio-modules-bt ];
-      extraConfig = ''
+      extraConfig = lib.mkForce ''
         load-module module-switch-on-connect
       '';
     };
     trackpoint.enable = true;
   };
-
   environment.etc."libinput/local-overrides.quirks" =  {
     text = ''
       [Trackpoint Override]
