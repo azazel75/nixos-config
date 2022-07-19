@@ -15,9 +15,6 @@
     enableSshSupport = true;
     extraConfig = ''  # cat ~/.gnupg/gpg-agent.conf
       allow-emacs-pinentry
-      default-key D7F2BD0F01F41A581AC559C46FBEA082628584C9
-      detailed-view
-      display :0
     '';
     pinentryFlavor = "gnome3";
     sshKeys = [ # cat ~/.gnupg/sshcontrol
