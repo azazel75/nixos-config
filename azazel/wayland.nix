@@ -2,6 +2,11 @@
   let
     inherit (lib) mkIf;
     waylandEnabled = nixosConfig.system.useWayland;
+    dbus-sway-environment = pkgs.writeShellScriptBin "dbus-sway-environment" ''
+        dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+        systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+        systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
   in {
     programs = mkIf waylandEnabled {
       mako = {
@@ -57,6 +62,7 @@
               menu = "${pkgs.bemenu}/bin/bemenu-run -b -p » --fn 'pango:${fname} ${builtins.toString font.size}'";
               mod = "Mod4";
               smsg = "${pkgs.sway}/bin/swaymsg";
+              pactl = "${pkgs.pulseaudio}/bin/pactl";
             in {
               bars = [
                 {
@@ -99,7 +105,7 @@
                 "${mod}+Ctrl+k" = "exec kodi";
                 "${mod}+Ctrl+n" = "exec nyxt-ok.sh";
                 "${mod}+Ctrl+s" = "exec signal";
-                "${mod}+Return" = "exec alacritty";
+                "${mod}+Return" = "exec foot";
                 "${mod}+Shift+c" = "reload";
                 "${mod}+Shift+e" = "exec ${pkgs.sway}/bin/swaynag -m 'Exit Sway?' -b 'Yes, exit Sway' '${smsg} exit'";
                 "${mod}+Shift+minus" = "move scratchpad";
@@ -118,12 +124,12 @@
                 "${mod}+space" = "focus mode_toggle";
                 "${mod}+w" = "layout tabbed";
                 "${mod}+v" = "split v";
-                XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-                XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-                XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+                XF86AudioLowerVolume = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
+                XF86AudioMute = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+                XF86AudioRaiseVolume = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
                 XF86Display = "exec ${pkgs.wdisplays}/bin/wdisplays";
-                XF86MonBrightnessDown = "exec ${bctl} s 5%-";
-                XF86MonBrightnessUp = "exec ${bctl} s 5%+";
+                XF86MonBrightnessDown = "exec ${bctl} s 2%-";
+                XF86MonBrightnessUp = "exec ${bctl} s 2%+";
               } // (genWorkspaceKey ["${mod}"] "workspace")
                 // (genWorkspaceKey ["${mod}" "Shift"] "move container to workspace");
               menu = "${menu}";
@@ -142,30 +148,30 @@
               seat = {
                 "*" = {
                   hide_cursor = "when-typing enable";
-                  xcursor_theme = ''"Adwaita" 24'';
+                  xcursor_theme = ''"OpenZone_Ice" 48'';
                 };
               };
               startup = [
-                {
+                { always = true;
+                  command = "${dbus-sway-environment}/bin/dbus-sway-environment";
+                }{
                   # see https://nixos.wiki/wiki/Firefox
                   always = true;
                   command = "systemctl --user import-environment";
-                }
-                {
+                }{
                   command = ''
                    ${pkgs.swayidle}/bin/swayidle -w \
                      timeout 600 '${lockCmd} -f ' \
                      before-sleep '${lockCmd} -f'
                   '';
-                }
-                {
+                }{
                   always = true;
                   command = "${pkgs.glib}/bin/gsettings set ${gnome-schema} text-scaling-factor 1.5";
                 }
                 # start polkit pinentry for priviledge escalation (virt-manager) also used
                 # by gnome utils like nm-connection-editor
                 { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-		{ command = "${pkgs.zeal}/bin/zeal"; }
+                { command = "${pkgs.zeal}/bin/zeal"; }
               ];
               terminal = "${pkgs.alacritty}/bin/alacritty";
               workspaceAutoBackAndForth = true;
@@ -188,6 +194,7 @@
             # QT (needs qt5.qtwayland in systemPackages), needed by VirtualBox GUI:
             export QT_QPA_PLATFORM=wayland-egl
             export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+            export EDITOR=emacsclient
           '';
           wrapperFeatures = {
             base = true;
